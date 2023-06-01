@@ -30,8 +30,8 @@ public class Hub {
         int count = 0;
         for (int i = 0; i < containers.length; i++) {
             for (int j = 0; j < containers[0].length; j++) {
-                if (containers[i][j].getPriority() == priority && containers[i][j].isInspected()) {
-                    count++;// those two conditions have to be true
+                if (containers[i][j] != null && containers[i][j].getPriority() == priority && containers[i][j].isInspected()) {
+                    count++;// those three conditions have to be true
                 }
             }
         }

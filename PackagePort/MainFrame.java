@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame{
     private JTextField tfIDNumber;
-
     private JComboBox comboBoxCountry;
     private JTextField tfWeight;
 
@@ -37,6 +36,8 @@ public class MainFrame extends JFrame{
     private JRadioButton firstHubRadioButton;
     private JRadioButton secondHubRadioButton;
     private JRadioButton thirdHubRadioButton;
+    private JButton examButton;
+    private JTextField textFieldExam;
     static int selectedHub;
 
 
@@ -69,7 +70,23 @@ public class MainFrame extends JFrame{
         containerFromACountry.addItem("Russia");
         containerFromACountry.addItem("USA");
 
+        //Exam Button listener
 
+        examButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int priority = 1;
+                if (btnPriority1.isSelected()) {
+                    priority = 1;
+                } else if (btnPriority2.isSelected()) {
+                    priority = 2;
+                } else if (btnPriority3.isSelected()) {
+                    priority = 3;
+                }
+
+                textFieldExam.setText(String.valueOf(port.howManyCont(priority)));
+            }
+        });
 
         // Button to Add a new Container, management of exception done
         pileButton.addActionListener(new ActionListener() {
@@ -111,6 +128,7 @@ public class MainFrame extends JFrame{
                 JOptionPane.showMessageDialog(mainPanel, "Container added to stack.");
             }
         });
+
 
 
         // Button to remove a container from the hub, using the input row and column
